@@ -90,6 +90,15 @@ public class BluetoothGattService extends BluetoothObject
       */
     public native List<BluetoothGattCharacteristic> getCharacteristics();
 
+    /** Returns the handle of the GATT service.
+     * @return the handle of the GATT service.
+     */
+    public String getServiceHandle() {
+        String[] path = getObjectPath().split("/");
+        String handle = path[path.length-1];
+        return handle.substring(handle.length()-4, handle.length());
+    }
+   
     private native void delete();
 
     private BluetoothGattService(long instance)

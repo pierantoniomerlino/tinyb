@@ -129,6 +129,15 @@ public class BluetoothGattCharacteristic extends BluetoothObject
       * NULL if an error occurred
       */
     public native List<BluetoothGattDescriptor> getDescriptors();
+    
+    /** Returns the handle of the GATT characteristic.
+     * @return the handle of the GATT characteristic.
+     */
+    public String getCharacteristicHandle() {
+        String[] path = getObjectPath().split("/");
+        String handle = path[path.length-1];
+        return handle.substring(handle.length()-4, handle.length());
+    }
 
     private native void init(BluetoothGattCharacteristic obj);
 

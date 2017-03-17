@@ -79,6 +79,15 @@ public class BluetoothGattDescriptor extends BluetoothObject
       * @return The cached value of this descriptor.
       */
     public native byte[] getValue();
+    
+    /** Returns the handle of the GATT descriptor.
+     * @return the handle of the GATT descriptor.
+     */
+    public String getDescriptorHandle() {
+        String[] path = getObjectPath().split("/");
+        String handle = path[path.length-1];
+        return handle.substring(handle.length()-4, handle.length());
+    }
 
     private native void delete();
 
